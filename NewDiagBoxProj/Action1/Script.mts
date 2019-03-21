@@ -1,25 +1,12 @@
-﻿'Import an Excel Sheet(a single file) to DataTable(UFT)
-'A DataTable is similar with Excel. There are two types of Datatables: 
-'	- Action/Local DataTable - Each action has its own private datatable, also known as local datatable, which can be accessed across actions.
-'	- Global DataTable - Each test has one global data sheet that is accessible across actions.
-
-'The syntax to import an Excel sheet is:  DataTable.ImportSheet Path_FileName, SheetName, DataTable_Sheet
-
-
-'Import "Sheet1" from Excel TestImportExcelSheet.xlsx  to local Datatable "Action1"
-'!!! The Excel file must be closed
+﻿'!!! The Excel file must be closed
 '!!! Introduce the RIGHT path
-DataTable.ImportSheet "C:\Users\user-pc\Desktop\TestImportExcelSheet.xlsx", "Sheet1", "Action1"
-
-'The top row of Excel sheet "Sheet1" becomes the column header in datatable "Action1" (See Picture.png)
+DataTable.ImportSheet "C:\UFT\TestImportExcelSheet.xlsx", "Sheet1", "Action1"
 
 'i - Number of rows
 i = DataTable.GetSheet("Action1").GetRowCount
-'print "Number of rows: "  & i
 
 'j - Number of columns
 j = DataTable.GetSheet("Action1").GetParameterCount
-'print "Number of colums: "  & j
 
 'Iterate to all rows and print actions+parameters
 For LineIterator = 1 To i
@@ -32,8 +19,7 @@ For LineIterator = 1 To i
 		Case "LaunchDiagBox"
 			LaunchDiagBox
 		Case "LoginUFT"
-			Set Param_Login = new User
-			Param_Login = LoginUFT
+			LoginUFT
 		Case "Authentication"
 			UserAction = DataTable("Parameter1", "Action1")
 			UserName = DataTable("Parameter2", "Action1")
@@ -44,20 +30,22 @@ For LineIterator = 1 To i
 				Authentification UserAction, "", "", ""
 			Else
 				If UserName = "" and UserPassword = "" Then
-					If Param_Login.name = "" and Param_Login.password = "" Then
+					If LoginParamUft.name = "" and LoginParamUft.password = "" Then
 						Desktop.CaptureBitmap path_images + "Failure_Authentication.png", True
-						Reporter.ReportEvent micFail, "Failure Authentification(" + UserAction + ", " + UserName + ", " + UserPassword + ", " + BrandName + ")", "LoginUFT wasn't called before", path_images + "Failure_Authentication.png"
-						f.WriteLine "FAILED Authentification(" + UserAction + ", " + UserName + ", " + UserPassword + ", " + BrandName + ")  " + "LoginUFT wasn't called before" + ", " + path_images + "Failure_Authentication.png"
+						Reporter.ReportEvent micFail, "Failure Authentification(" + UserAction + ", " + UserName + ", " + UserPassword + ", " + BrandName + ")", "LoginUFT wasn't called before or password/name is empty"
+						f.WriteLine "FAILED Authentification(" + UserAction + ", " + UserName + ", " + UserPassword + ", " + BrandName + ")  " + "LoginUFT wasn't called before or password/name is empty"+ ", " + path_images + "Failure_Authentication.png"
 						ArchiveFolder path + "\" + "APP_log.zip", "C:\APP\ddc\log"
 						'ArchiveFolder path + "\" + "AWRoot_trace.zip", "C:\AWRoot\dtwr\trace"
 						'ArchiveFolder path + "\" + "AWRoot_log.zip", "C:\AWRoot\dtwr\stcapi\log"
 						ExitTest
 					Else
-						UserName = Param_Login.name
-						UserPassword = Param_Login.password
+						UserName = LoginUft.name
+						UserPassword = LoginParamUft.password
+						Authentification UserAction, UserName, UserPassword, BrandName
 					End If 
+				Else
+					Authentification UserAction, UserName, UserPassword, BrandName
 				End If
-				Authentification UserAction, UserName, UserPassword, BrandName
 			End If
 			
 		Case "SelectBrand"
@@ -144,3 +132,5 @@ Next
 ArchiveFolder path + "\" + "APP_log.zip", "C:\APP\ddc\log"
 'ArchiveFolder path + "\" + "AWRoot_trace.zip", "C:\AWRoot\dtwr\trace"
 'ArchiveFolder path + "\" + "AWRoot_log.zip", "C:\AWRoot\dtwr\stcapi\log" @@ script infofile_;_ZIP::ssf77.xml_;_
+
+
