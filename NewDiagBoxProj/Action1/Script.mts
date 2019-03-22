@@ -5,9 +5,6 @@ DataTable.ImportSheet "C:\UFT\TestImportExcelSheet.xlsx", "Sheet1", "Action1"
 'i - Number of rows
 i = DataTable.GetSheet("Action1").GetRowCount
 
-'j - Number of columns
-j = DataTable.GetSheet("Action1").GetParameterCount
-
 'Iterate to all rows and print actions+parameters
 For LineIterator = 1 To i
 	'DataTable.SetCurrentRow(RowNumber) - set current row, specified by RowNumber
@@ -132,5 +129,4 @@ Next
 ArchiveFolder path + "\" + "APP_log.zip", "C:\APP\ddc\log"
 'ArchiveFolder path + "\" + "AWRoot_trace.zip", "C:\AWRoot\dtwr\trace"
 'ArchiveFolder path + "\" + "AWRoot_log.zip", "C:\AWRoot\dtwr\stcapi\log" @@ script infofile_;_ZIP::ssf77.xml_;_
-
 
