@@ -1,5 +1,8 @@
-﻿'DataTable.ImportSheet "C:\UFT\TestImportExcelSheet.xlsx", "Sheet1", "Action1" @@ hightlight id_;_67666_;_script infofile_;_ZIP::ssf107.xml_;_
- @@ hightlight id_;_66146_;_script infofile_;_ZIP::ssf122.xml_;_
+﻿SelectBrand "PEUGE"
+
+
+'DataTable.ImportSheet "C:\UFT\TestImportExcelSheet.xlsx", "Sheet1", "Action1" @@ hightlight id_;_67666_;_script infofile_;_ZIP::ssf107.xml_;_
+' @@ hightlight id_;_66146_;_script infofile_;_ZIP::ssf122.xml_;_
 '
 'i = DataTable.GetSheet("Action1").GetRowCount
 '
@@ -118,7 +121,7 @@
 '				Reporter.ReportEvent micDone, "Success DiagBoxState()", "No error detected.", path_photo
 '				f.WriteLine "DiagBoxState,PASSED," + " ," + path_photo + "No error detected."
 '			Else
-'				Reporter.ReportEvent micFail, "Failure DiagBoxState()", "An error has occurred", path_photo
+'				Reporter.ReportEvent micFail, "Failure DiagBoxState()", NotificationText, path_photo
 '				f.WriteLine "DiagBoxState,FAILED," + " ," + path_photo + "An error has occurred"
 '			End If
 '	End Select
@@ -127,9 +130,6 @@
 'ArchiveFolder path + "\" + "APP_log.zip", "C:\APP\ddc\log"
 ''ArchiveFolder path + "\" + "AWRoot_trace.zip", "C:\AWRoot\dtwr\trace"
 ''ArchiveFolder path + "\" + "AWRoot_log.zip", "C:\AWRoot\dtwr\stcapi\log" @@ script infofile_;_ZIP::ssf77.xml_;_
-
-
-
 
 
 
@@ -182,4 +182,14 @@
 '	f.WriteLine "DiagBoxState,FAILED," + " ," + path_photo + NotificationText
 'End If
 '########
+
+
+
+'print CheckFormat ("CHAR_XX_XXX_XXX_XX", "96 000 000 80")
+'print CheckFormat ("NUMERIC_NO_SIGNED", "200")
+'print CheckFormat ("NUMERIC_SIGNED", "-200")
+'print CheckFormat ("CHAR_DATE_SLASH", "23 / 01 / 20AA")
+'
+
+'print CheckFormat ("API_XX_XX", "22.255")
 

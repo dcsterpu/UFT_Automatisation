@@ -1,0 +1,12 @@
+Function,Result,Time(ms),Image,Comment
+LaunchDiagBox,PASSED,71805,C:\UFT\Reports\Report4122019_32344_PM\images\LaunchDiagBox1.png,The application DiagBox is ready to use!
+SelectBrand,PASSED,5926,C:\UFT\Reports\Report4122019_32344_PM\images\SelectBrand2.png,The brand PEUGEOT was selected
+LoginUFT,PASSED,26609,C:\UFT\Reports\Report4122019_32344_PM\images\LoginUFT3.png,New user and password were introduced and saved
+ModelSelect,PASSED,13020,C:\UFT\Reports\Report4122019_32344_PM\images\ModelSelect4.png,The button AUTO was selected
+Delay,PASSED,-,,Global delay was set to 20000 ms
+SelectButton,PASSED,19043,C:\UFT\Reports\Report4122019_32344_PM\images\SelectButton5.png,The button OK was selected
+SelectButton,PASSED,16738,C:\UFT\Reports\Report4122019_32344_PM\images\SelectButton6.png,The button OK was selected
+LaunchApplication,PASSED,152469,C:\UFT\Reports\Report4122019_32344_PM\images\LaunchApplication7.png,Fault finding was launched
+SelectECU,PASSED,12086,C:\UFT\Reports\Report4122019_32344_PM\images\SelectECU8.png,ECU: Engine management ECU was selected
+SelectButton,PASSED,13945,C:\UFT\Reports\Report4122019_32344_PM\images\SelectButton9.png,The button OK was selected
+SelectMenu,PASSED,3691,C:\UFT\Reports\Report4122019_32344_PM\images\SelectMenu10.png,Menu: IDENTIFICATION was selected
